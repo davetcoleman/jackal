@@ -187,6 +187,24 @@
     <origin xyz="${mount_spacing} 0 0" />
   </joint>
 
+  <!-- Reel -->
+  <link name="reel_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+      <geometry>
+        <mesh filename="package://jackal_description/meshes/jackal-wheel.stl"/>
+      </geometry>
+      <material name="black" />
+    </visual>
+  </link>
+
+  <joint name="reel_joint" type="continuous">
+    <parent link="mid_mount" />
+    <child link="reel_link" />
+    <origin xyz="${mount_spacing} 0 0" />
+    <axis xyz="0 1 0" />
+  </joint>
+
   <!-- Bring in simulation data for Gazebo. -->
   <xacro:include filename="jackal.gazebo" />
 
